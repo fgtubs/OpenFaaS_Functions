@@ -1,0 +1,9 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:30080
+functions:
+  payload-echo:
+    lang: python3-http
+    handler: ./payload-echo
+    image: anyfin/payload-echo:latest
