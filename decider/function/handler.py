@@ -1,8 +1,8 @@
+from function import decide
+
+
 def handle(req):
-    """handle a request to the function
-    Args:
-        req (str): request body
-    """
-
-    return req
-
+    buf = ""
+    for line in str(req):
+        buf = buf + line
+    return decide.preprocess_image(buf)
