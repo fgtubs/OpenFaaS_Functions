@@ -1,4 +1,4 @@
-from function import laod_model
+from function import load_model
 
 
 def handle(req):
