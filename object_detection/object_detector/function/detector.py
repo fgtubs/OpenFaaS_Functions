@@ -151,7 +151,7 @@ def run_detector(path):
       img.numpy(), result["detection_boxes"],
       result["detection_class_entities"], result["detection_scores"])
   print(image_with_boxes)
-  display_image(image_with_boxes)
+  #display_image(image_with_boxes)
 
 
 if __name__ == "__main__":
