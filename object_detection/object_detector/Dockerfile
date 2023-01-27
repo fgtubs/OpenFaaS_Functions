@@ -65,6 +65,9 @@ ENV fprocess="python index.py"
 ENV cgi_headers="true"
 ENV mode="http"
 ENV upstream_url="http://127.0.0.1:5000"
+ENV exec_timeout=900s
+ENV write_timeout=900s
+ENV read_timeout=900s
 
 HEALTHCHECK --interval=5s CMD [ -e /tmp/.lock ] || exit 1
 
