@@ -150,9 +150,14 @@ def run_detector(path):
   image_with_boxes = draw_boxes(
       img.numpy(), result["detection_boxes"],
       result["detection_class_entities"], result["detection_scores"])
-  print(image_with_boxes)
-  #display_image(image_with_boxes)
-
+  #print(image_with_boxes)
+  img_ = Image.fromarray(image_with_boxes, 'RGB')
+  img_bytes = img_.tobytes()
+  #print(img_bytes)
+  #img_.save('my.png')
+  img_enc = base64.b64encode(img_bytes)  # img_bytes is a binary image
+  img_string_enc = str(img_enc)
+  return img_string_enc
 
 if __name__ == "__main__":
   run_detector(detector, downloaded_image_path)
