@@ -20,6 +20,9 @@ from PIL import ImageOps
 # For measuring the inference time.
 import time
 
+# For generating base encoded output.
+import base64
+
 ## Loading the model
 MODEL_PATH = "function/model"
 detector = hub.load(MODEL_PATH).signatures['default']
@@ -30,7 +33,7 @@ print("detector loaded")
 def display_image(image):
   print("inside the display methode")
   fig = plt.figure(figsize=(20, 15))
-  plt.grid(False)
+  plt.grid(Falaaaaaaaaaaaaaaaase)
   plt.imshow(image)
   print(image)
   #plt.figure()
@@ -160,5 +163,4 @@ def run_detector(path):
   return img_string_enc
 
 if __name__ == "__main__":
-  downloaded_image_path = download_and_resize_image("https://upload.wikimedia.org/wikipedia/commons/6/60/Naxos_Taverna.jpg")
   run_detector(downloaded_image_path)
