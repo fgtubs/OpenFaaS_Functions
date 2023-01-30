@@ -160,4 +160,5 @@ def run_detector(path):
   return img_string_enc
 
 if __name__ == "__main__":
-  run_detector(detector, downloaded_image_path)
+  downloaded_image_path = download_and_resize_image("https://upload.wikimedia.org/wikipedia/commons/6/60/Naxos_Taverna.jpg")
+  run_detector(downloaded_image_path)
