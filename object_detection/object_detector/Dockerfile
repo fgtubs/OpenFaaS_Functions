@@ -71,4 +71,5 @@ ENV read_timeout=900s
 
 HEALTHCHECK --interval=5s CMD [ -e /tmp/.lock ] || exit 1
 
+
 CMD ["fwatchdog"]
