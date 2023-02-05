@@ -30,18 +30,7 @@ print("detector loaded")
 
 ## Functionality ##
 
-def display_image(image):
-  print("inside the display methode")
-  fig = plt.figure(figsize=(20, 15))
-  plt.grid(Falaaaaaaaaaaaaaaaase)
-  plt.imshow(image)
-  print(image)
-  #plt.figure()
-  plt.show()
-
-
-def download_and_resize_image(url, new_width=256, new_height=256,
-                              display=False):
+def download_and_resize_image(url, new_width=256, new_height=256):
   _, filename = tempfile.mkstemp(suffix=".jpg")
   response = urlopen(url)
   image_data = response.read()
@@ -51,8 +40,6 @@ def download_and_resize_image(url, new_width=256, new_height=256,
   pil_image_rgb = pil_image.convert("RGB")
   pil_image_rgb.save(filename, format="JPEG", quality=90)
   print("Image downloaded to %s." % filename)
-  #if display:
-  #  display_image(pil_image)
   return filename
 
 
@@ -153,14 +140,14 @@ def run_detector(path):
   image_with_boxes = draw_boxes(
       img.numpy(), result["detection_boxes"],
       result["detection_class_entities"], result["detection_scores"])
-  #print(image_with_boxes)
   img_ = Image.fromarray(image_with_boxes, 'RGB')
-  img_bytes = img_.tobytes()
-  #print(img_bytes)
-  #img_.save('my.png')
-  img_enc = base64.b64encode(img_bytes)  # img_bytes is a binary image
-  img_string_enc = str(img_enc)
-  return img_string_enc
+  img_.save('my.png')
+  
+  with open("my.png", "rb") as image_file:
+    encoded_string = base64.b64encode(image_file.read()).decode("utf-8")
+  return encoded_string
+
 
 if __name__ == "__main__":
+  downloaded_image_path = download_and_resize_image("https://upload.wikimedia.org/wikipedia/commons/6/60/Naxos_Taverna.jpg")
   run_detector(downloaded_image_path)
